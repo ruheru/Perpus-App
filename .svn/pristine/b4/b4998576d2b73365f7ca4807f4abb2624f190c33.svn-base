@@ -1,0 +1,8 @@
+package com.umam.khairul.perpustakaan.service;
+
+import com.umam.khairul.perpustakaan.model.PinjamD;
+
+public interface PinjamService {
+	public PinjamD save(PinjamD pinjamD);
+	public PinjamD findOne (String id);
+}

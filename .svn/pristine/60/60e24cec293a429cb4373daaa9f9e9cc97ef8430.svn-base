@@ -1,0 +1,39 @@
+package com.umam.khairul.perpustakaan.service;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.umam.khairul.perpustakaan.dao.PinjamDao;
+import com.umam.khairul.perpustakaan.dao.PinjamHDao;
+import com.umam.khairul.perpustakaan.model.Pinjam;
+import com.umam.khairul.perpustakaan.model.PinjamD;
+
+@Service
+public class PinjamServiceImpl implements PinjamService{
+	
+	@Autowired
+	PinjamDao pd;
+	
+	@Autowired
+	PinjamHDao phd;
+
+	@Override
+	@Transactional(rollbackFor=Exception.class)
+	public PinjamD save(PinjamD pinjamD) throws ParseException {
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+		Pinjam pinjam = phd.save(new Pinjam());
+		pinjamD.setId_pinjam(pinjam.getId());
+		pinjamD.setTanggalHarusKembali(sdf.parse("asd"));
+		return pd.save(pinjamD);
+	}
+
+	@Override
+	public PinjamD findOne(String id) {
+		return pd.findOne(id);
+	}
+
+}

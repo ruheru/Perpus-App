@@ -1,0 +1,96 @@
+package com.learn.app.perpustakaan.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name="mahasiswa")
+public class Mahasiswa {
+
+	@Id @GeneratedValue(generator = "uuid")
+	@GenericGenerator(name="uuid", strategy="uuid2")
+	private String id;
+	
+	@Column
+	@NotNull(message="Nama Tidak Boleh Kosong")
+	@NotEmpty(message="Name Tidak Boleh Empty")
+	private String nama;
+	
+	@Column
+	@NotNull(message="Nomor Handphone Tidak Boleh Kosong")
+	@NotEmpty(message="Nomor Handphone Tidak Boleh Empty")
+	private String nomorHp;
+	
+	@Column
+	private String jenisKelamin;
+	
+	@Column
+	private String alamat;
+	
+	@Column
+	private String status;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNomorHp() {
+		return nomorHp;
+	}
+
+	public void setNomorHp(String nomorHp) {
+		this.nomorHp = nomorHp;
+	}
+
+	public String getNama() {
+		return nama;
+	}
+
+	public void setNama(String nama) {
+		this.nama = nama;
+	}
+
+	public String getJenisKelamin() {
+		return jenisKelamin;
+	}
+
+	public void setJenisKelamin(String jenisKelamin) {
+		this.jenisKelamin = jenisKelamin;
+	}
+	
+	@Override
+	public String toString() {
+		return "Mahasiswa [id=" + id + ", nama=" + nama + ", nomorHp=" + nomorHp + ", jenisKelamin=" + jenisKelamin + ", alamat=" + alamat + ", status=" + status + " ]";
+	}
+
+	public String getAlamat() {
+		return alamat;
+	}
+
+	public void setAlamat(String alamat) {
+		this.alamat = alamat;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	
+}

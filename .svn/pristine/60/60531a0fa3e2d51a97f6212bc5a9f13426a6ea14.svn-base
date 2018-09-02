@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Transaksi</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Form Transaksi</h3>
+				<div class="col-md-10">
+					
+					<form action="#" class="form-horizontal"
+						th:action="@{/pinjam/form}" th:object="${pinjam}"
+						method="post">
+						<input type="hidden" th:field="*{id}" />
+					
+						<div class="form-group">
+							<label class="control-label col-sm-2">Mahasiswa :</label>
+								<div class="col-sm-5">
+									<select class="form-control" th:field="*{mahasiswa.id}">
+										<option th:each="mhs : ${listMahasiswa}"
+										th:value="${mhs.id}"
+										th:text="${mhs.nama}">mhs</option>
+									</select>
+								</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2">Buku :</label>
+								<div class="col-sm-5">
+									<select class="form-control" th:field="*{buku.id}">
+										<option th:each="b : ${listBuku}"
+										th:value="${b.id}"
+										th:text="${b.nama}">vuku</option>
+									</select>
+								</div>
+						</div>
+						
+						<!-- <div class="form-group">
+							<label class="control-label col-sm-2">Tanggal Kembali :</label>
+								<div class="col-sm-5">
+									<input type="date" th:field="*{tanggalHarusKembali}" th:value="*{tanggalHarusKembali}" class="form-control" id="tglKembali"
+              						 th:name="tglKembali" />
+								</div>
+						</div> -->
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2">Deskripsi :</label>
+								<div class="col-sm-5">
+              						 <textarea rows="3" cols="2" class="form-control" name="txtDeskripsi"
+              						 	id="txtDeskripsi" th:field="*{deskripsi}"> </textarea> 
+								</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-8">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

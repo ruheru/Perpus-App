@@ -1,0 +1,87 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Mahasiswa</title>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Form Mahasiswa</h3>
+			<br/>
+			<div class="col-md-10">
+				<!-- save alert -->
+				<div th:if="${saveMahasiswa eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error !</strong> Gagal Menyimpan Data Mahasiswa.
+					</div>
+				</div>
+				
+				<form action="#" class="form-horizontal" 
+				th:action="@{/mahasiswa/form}" th:object="${mahasiswa}" 
+				method="post">
+				
+				<input type="hidden" th:field="*{id}" />
+				<div style="background-color:#FFB2B2" th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}">Pesan Error</div>
+				<div style="background-color:#FFB2B2" th:if="${#fields.hasErrors('nomorHp')}" th:errors="*{nomorHp}">Pesan Error</div>
+				<br/>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode">Nama Mahasiswa:</label>			
+					<div class="col-sm-5">
+						<input id="txtNama" name="txtNama" type="text" th:field="*{nama}"
+							class="form-control" placeholder="Masukan Nama Mahasiswa" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode">Nomor Hp:</label>			
+					<div class="col-sm-5">
+						<input id="txtNomorHp" name="txtNomorHp" type="text" th:field="*{nomorHp}"
+							class="form-control" placeholder="Masukan Nomor Handphone" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode">Jenis Kelamin:</label>
+					<div class="col-sm-5">
+						<!-- <select th:field="*{jenisKelamin}" id="jenisKelamin" th:name="jenisKelamin" th:value="jenisKelamin">
+							<option value="laki-laki">Laki-laki</option>
+	                        <option value="perempuan">Disetujui</option>
+						</select> -->
+						<input type="radio" th:field="*{jenisKelamin}" th:value="Laki-laki" /> Laki-laki
+						<input type="radio" th:field="*{jenisKelamin}" th:value="Perempuan" /> Perempuan
+					</div>
+				</div> 
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode">Alamat: </label>
+					<div class="col-sm-5">
+						<textarea th:field="*{alamat}" id="txtAlamat" name="txtAlamat"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode">Status: </label>
+					<div class="col-sm-5">
+						<select th:field="*{status}" id="status" th:name="status" th:value="status">
+							<option value="Member">Member</option>
+	                        <option value="Umum">Umum</option>
+						</select>
+					</div>
+				</div> 
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>		
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

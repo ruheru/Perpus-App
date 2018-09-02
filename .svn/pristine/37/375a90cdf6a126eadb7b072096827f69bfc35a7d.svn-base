@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Hallo mahasiswa abadi, hehe</h1>
+				<br/>
+				<a th:href="@{/pinjam/form}" 
+					class="btn btn-info btn-md">
+					<span class="glyphicon glyphicon-plus" ></span>
+					Mulai Transaksi
+				</a>
+				<br/>
+				<br/>
+			</div>
+			<div class="col-md-7">
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Peminjam</th>
+							<th>Judul Buku</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${listPinjam}">
+							<td th:text="${data.mahasiswa.nama}" />
+							<td th:text="${data.buku.nama}" />
+							<td th:text="${data.id_status}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

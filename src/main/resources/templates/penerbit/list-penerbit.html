@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Master Penerbit</title>
+
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Master Penerbit</h1>
+				<br/> 
+				<a th:href="@{/penerbit/form}" 
+					class="btn btn-info btn-md"> 
+					<span class="glyphicon glyphicon-plus"></span> 
+					Tambah Penerbit
+				</a>
+				<br/>
+				<br/>
+			</div>
+			
+			<div class="col-md-7">
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Nama Penerbit</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pen : ${list_penerbit}">
+							<td th:text="${pen.code}">code 1</td>
+							<td th:text="${pen.nama}">nama 1</td>
+							<td>
+								<a th:href="@{/penerbit/form(id=${pen.id})}">
+								 <span class="glyphicon glyphicon-edit"></span>
+								</a>
+								&nbsp;&nbsp;
+								<a th:href="@{/penerbit/hapus(ad=${pen.id})}">
+								 <span class="glyphicon glyphicon-trash"></span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

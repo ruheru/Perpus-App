@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package com.umam.khairul.perpustakaan.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+/**
+ * @author Ridhfirmans
+ *
+ * @created date Jul 8, 2018
+ * Keep learning, you can do it!
+ */
+
+@Controller
+@RequestMapping("/mahasiswa")
+public class MahasiwaController {
+	
+	@RequestMapping("/form-mahasiswa")
+	public String index(){
+		return "/mahasiswa/form-mahasiswa";
+	}
+
+}

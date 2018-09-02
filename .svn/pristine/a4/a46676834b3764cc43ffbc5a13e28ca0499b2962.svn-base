@@ -1,0 +1,99 @@
+package com.umam.khairul.perpustakaan.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "pinjam_d")
+public class PinjamD {
+
+	@Id @GeneratedValue(generator = "uuid")
+	@GenericGenerator(name="uuid", strategy = "uuid2")
+	private String id;
+	
+	@Column
+	private String id_pinjam;
+	
+	@Column
+	private String id_status;
+	
+//	@Temporal(TemporalType.DATE)
+//	@Column
+//	private Date tanggalHarusKembali;
+
+	@Column
+	private String deskripsi;
+	
+	@ManyToOne
+	@JoinColumn(name="id_mahasiswa", referencedColumnName="id")
+	private Mahasiswa mahasiswa;
+	
+	@ManyToOne
+	@JoinColumn(name="id_buku", referencedColumnName="id")
+	private Buku buku;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId_pinjam() {
+		return id_pinjam;
+	}
+
+	public void setId_pinjam(String id_pinjam) {
+		this.id_pinjam = id_pinjam;
+	}
+
+	public String getId_status() {
+		return id_status;
+	}
+
+	public void setId_status(String id_status) {
+		this.id_status = id_status;
+	}
+
+//	public Date getTanggalHarusKembali() {
+//		return tanggalHarusKembali;
+//	}
+//
+//	public void setTanggalHarusKembali(Date tanggalHarusKembali) {
+//		this.tanggalHarusKembali = tanggalHarusKembali;
+//	}
+
+	public String getDeskripsi() {
+		return deskripsi;
+	}
+
+	public void setDeskripsi(String deskripsi) {
+		this.deskripsi = deskripsi;
+	}
+
+	public Mahasiswa getMahasiswa() {
+		return mahasiswa;
+	}
+
+	public void setMahasiswa(Mahasiswa mahasiswa) {
+		this.mahasiswa = mahasiswa;
+	}
+
+	public Buku getBuku() {
+		return buku;
+	}
+
+	public void setBuku(Buku buku) {
+		this.buku = buku;
+	}
+	
+	
+}

@@ -1,0 +1,9 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/db_perpus
+spring.datasource.username=root
+spring.datasource.password=
+
+#untuk bisa auto create table sendiri
+spring.jpa.generate-ddl=true
+
+#biar tidak usah restart server ketika mengubah UI thymeleaf
+spring.thymeleaf.cache = false

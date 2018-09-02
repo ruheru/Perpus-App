@@ -1,0 +1,35 @@
+package com.umam.khairul.perpustakaan.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.umam.khairul.perpustakaan.dao.PinjamDao;
+import com.umam.khairul.perpustakaan.dao.PinjamHDao;
+import com.umam.khairul.perpustakaan.model.Pinjam;
+import com.umam.khairul.perpustakaan.model.PinjamD;
+
+@Service
+public class PinjamServiceImpl implements PinjamService{
+	
+	@Autowired
+	PinjamDao pd;
+	
+	@Autowired
+	PinjamHDao phd;
+
+	@Override
+	@Transactional
+	public PinjamD save(PinjamD pinjamD) {
+		Pinjam pinjam = phd.save(new Pinjam());
+		pinjamD.setId_pinjam(pinjam.getId());
+		return pd.save(pinjamD);
+	}
+
+	@Override
+	public PinjamD findOne(String id) {
+		return pd.findOne(id);
+	}
+
+}

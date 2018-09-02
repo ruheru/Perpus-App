@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Master Mahasiswa</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Master Mahasiswa</h1>
+				<br/>
+				<a th:href="@{/mahasiswa/form}" class="btn btn-info btn-md"> 
+					<span class="glyphicon glyphicon-plus"></span> 
+					Tambah Mahasiswa
+				</a>
+				<br/><br/>		
+			</div>
+			
+			<div class="col-md-7">
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Nama Mahasiswa</th>
+							<th>Nomor Hp</th>
+							<th>Jenis Kelamin</th>
+							<th>Alamat</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="mhs : ${list_mahasiswa}">
+							<td th:text="${mhs.nama}">nama</td>
+							<td th:text="${mhs.nomorHp}">nomorHp</td>
+							<td th:text="${mhs.jenisKelamin}">jenisKelamin</td>
+							<td th:text="${mhs.alamat}">alamat</td>
+							<td th:text="${mhs.status}">status</td>
+							<td>
+								<a th:href="@{/mahasiswa/form(id=${mhs.id})}">
+									 <span class="glyphicon glyphicon-edit"></span>
+								</a>
+								&nbsp;&nbsp;
+								<a th:href="@{/mahasiswa/hapus(ad=${mhs.id})}">
+									 <span class="glyphicon glyphicon-trash"></span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+package com.umam.khairul.perpustakaan.service;
+
+import java.util.List;
+
+import com.umam.khairul.perpustakaan.model.Mahasiswa;
+
+public interface MahasiswaService {
+	public List<Mahasiswa> findAll();
+	public Mahasiswa findOne(String id);
+}
